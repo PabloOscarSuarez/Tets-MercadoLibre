@@ -1,0 +1,21 @@
+{
+  "name": "meli-api",
+  "version": "1.0.0",
+  "description": "API para la gestion de  busqueda de productos en MELI ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./API/index.js"
+  },
+  "author": "Pablo Oscar Suarez Salvatierra",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
