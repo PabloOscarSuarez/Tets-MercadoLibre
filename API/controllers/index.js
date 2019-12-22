@@ -21,14 +21,12 @@ const getProductList = async (req, res, next) => {
 const getProduct = async (req, res, next) => {
   try {
     const id = req.params.id;
-    console.log(`${endPointDetailProduct}${id}`);
     const detailProduct = await axios.get(`${endPointDetailProduct}${id}`);
     const descriptionProduct = await axios.get(
       `${endPointDetailProduct}${id}/description`
     );
     detailProduct.data.description = descriptionProduct.data.plain_text;
-    const product = productList(detailProduct.data);
-    res.json(product);
+    res.json(productList(detailProduct.data));
   } catch (error) {
     console.log(error);
     next();
