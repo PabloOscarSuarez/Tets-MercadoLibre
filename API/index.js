@@ -1,9 +1,9 @@
-const express = require("express");
-const routes = require("./routes");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
-const compression = require("compression");
-const cors = require("cors");
+import express from "express";
+import routes from "./routes";
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import compression from "compression";
+import cors from "cors";
 
 //crear el servidor
 const app = express();
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
 
 //habilitar routing
-app.use("/", routes());
+app.use("/api", routes());
 
 app.listen(4000, () => {
   console.log("servidor funcionando");
