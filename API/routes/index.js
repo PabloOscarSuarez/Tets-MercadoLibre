@@ -1,13 +1,12 @@
 import express from "express";
 
-import searchController from "../controllers/searchController";
-import productController from "../controllers/productController";
+import searchController from "../controllers";
 
 const router = express.Router();
 
 const routes = () => {
-  router.get("/items", searchController);
-  router.get("/items/:id", productController);
+  router.get("/items", searchController.getProductList);
+  router.get("/items/:id", searchController.getProduct);
   return router;
 };
 

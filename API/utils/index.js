@@ -1,28 +1,34 @@
-export const decimalFormatting = value => {
-  return (value % 1).toFixed(2).substring(2);
+const decimalFormatting = value => {
+  if (typeof value === "number") {
+    return (value % 1).toFixed(2).substring(2);
+  } else {
+    return null;
+  }
 };
 
-export const treeOfCategories = filters => {
-  try {
+const treeOfCategories = filters => {
+  if (Array.isArray(filters)) {
     const categories = filters.find(category => (category.id = "category"));
     const result = categories
       ? categories.values[0].path_from_root.map(category => category.name)
       : [];
     console.log(result);
     return result;
-  } catch (error) {
+  } else {
     return [];
   }
 };
 
-export const mapProduct = ({
+const mapProduct = ({
   id,
   title,
   price: amount,
   currency_id: currency,
   thumbnail: picture,
   condition,
-  shipping: { free_shipping: free_shipping }
+  shipping: { free_shipping: free_shipping },
+  sold_quantity,
+  description
 }) => {
   return {
     id,
@@ -34,17 +40,21 @@ export const mapProduct = ({
     },
     picture,
     condition,
-    free_shipping
+    free_shipping,
+    sold_quantity,
+    description
   };
 };
 
-export const items = data => {
+export const productList = data => {
   return {
     author: {
       name: "Pablo",
       lastname: "Salvatierra Suarez"
     },
     categories: treeOfCategories(data.filters),
-    items: data.results.map(item => mapProduct(item))
+    items:
+      (data.results && data.results.map(item => mapProduct(item))) ||
+      mapProduct(data)
   };
 };
