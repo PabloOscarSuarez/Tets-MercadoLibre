@@ -28,7 +28,8 @@ const mapProduct = ({
   condition,
   shipping: { free_shipping: free_shipping },
   sold_quantity,
-  description
+  description,
+  address: { state_name: address }
 }) => {
   return {
     id,
@@ -42,7 +43,8 @@ const mapProduct = ({
     condition,
     free_shipping,
     sold_quantity,
-    description
+    description,
+    address
   };
 };
 

@@ -9,7 +9,8 @@ import {
 
 import axios from "axios";
 
-const baseUrl = "";
+const baseUrl = "http://localhost:4000/api/items?q=";
+const baseUrlById = "";
 
 export const searchProducts = payload => async dispatch => {
   dispatch({ type: SEARCH_PRODUCTS_START });
