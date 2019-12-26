@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./redux";
+import { store } from "../../redux";
 
-import ProductsList from "./components/ProductsList";
-import ProductDetail from "./components/ProductDetail";
-import Home from "./components/Home ";
-import ErrorPage from "./components/ErrorPage";
-import Header from "./components/Header/Header";
+import ProductsList from "../ProductsList";
+import ProductDetail from "../ProductDetail";
+import Home from "../Home ";
+import ErrorPage from "../ErrorPage";
+import Header from "../Header/Header";
 
 const App = () => (
   <Provider store={store}>
