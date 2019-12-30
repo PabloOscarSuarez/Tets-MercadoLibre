@@ -17,7 +17,6 @@ const ProductOfList = ({
   const handleClick = () => {
     history.push(`/items/${id}`);
   };
-  console.log(price);
   return (
     <styles.Container onClick={handleClick}>
       <styles.Content>
@@ -30,6 +29,7 @@ const ProductOfList = ({
             )}
           </styles.Details>
           <styles.Title>{title}</styles.Title>
+          Completo!!!
         </styles.ContentDetailAndTitle>
       </styles.Content>
       <styles.Address>{address}</styles.Address>

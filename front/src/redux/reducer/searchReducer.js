@@ -7,7 +7,11 @@ import {
   SEARCH_PRODUCT_BY_ID_START
 } from "../consts";
 
-const initialState = {};
+const initialState = {
+  isLoading: false,
+  productsResults: {},
+  productDetail: {}
+};
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {

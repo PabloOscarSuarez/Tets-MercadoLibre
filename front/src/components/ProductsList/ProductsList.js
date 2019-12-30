@@ -7,7 +7,7 @@ import { searchProducts } from "../../redux/actions/search";
 import { productsResults, isSearchingLoading } from "../../redux/selectors";
 import styles from "./styles";
 
-import Product from "../ProductOfList";
+import ProductOfList from "../ProductOfList";
 
 const ProductsList = ({ location }) => {
   const dispatch = useDispatch();
@@ -18,20 +18,19 @@ const ProductsList = ({ location }) => {
   useEffect(() => {
     dispatch(searchProducts(search));
   }, [search]);
+
+  const items = product.items && product.items;
   return (
-    (isLoading === undefined && <h1>esperando respuesta del servidor</h1>) ||
-    (isLoading && <h1>cargando</h1>) ||
-    (product === null && <h1>problema en respuesta del servidor</h1>) ||
-    (product.items && (
+    (items && (
       <styles.Container>
         {product.items.map(item => (
-          <>
-            <Product {...item} key={item.id} />
+          <div key={item.id}>
+            <ProductOfList {...item} />
             <styles.Divider />
-          </>
+          </div>
         ))}
       </styles.Container>
-    ))
+    )) || <h1>cargando ...</h1>
   );
 };
 
