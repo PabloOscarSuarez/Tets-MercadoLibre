@@ -20,6 +20,7 @@ const getProductList = async (req, res, next) => {
 
 const getProduct = async (req, res, next) => {
   try {
+    console.log(req.params.id, "soy yo");
     const id = req.params.id;
     const detailProduct = await axios.get(`${endPointDetailProduct}${id}`);
     const descriptionProduct = await axios.get(

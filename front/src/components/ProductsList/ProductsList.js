@@ -22,13 +22,16 @@ const ProductsList = ({ location }) => {
     (isLoading === undefined && <h1>esperando respuesta del servidor</h1>) ||
     (isLoading && <h1>cargando</h1>) ||
     (product === null && <h1>problema en respuesta del servidor</h1>) ||
-    (product.items &&
-      product.items.map(item => (
-        <styles.Container>
-          <Product {...item} key={item.id} />
-          <styles.Divider />
-        </styles.Container>
-      )))
+    (product.items && (
+      <styles.Container>
+        {product.items.map(item => (
+          <>
+            <Product {...item} key={item.id} />
+            <styles.Divider />
+          </>
+        ))}
+      </styles.Container>
+    ))
   );
 };
 

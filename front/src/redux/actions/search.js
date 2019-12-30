@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 
 const baseUrl = "http://localhost:4000/api/items?q=";
-const baseUrlById = "";
+const baseUrlById = "http://localhost:4000/api/items/";
 
 export const searchProducts = payload => async dispatch => {
   dispatch({ type: SEARCH_PRODUCTS_START });
@@ -25,6 +25,7 @@ export const searchProducts = payload => async dispatch => {
 export const searchDetailProducts = payload => async dispatch => {
   dispatch({ type: SEARCH_PRODUCT_BY_ID_START });
   try {
+    console.log(baseUrlById + payload);
     const response = await axios.get(baseUrlById + payload);
     dispatch({ type: SEARCH_PRODUCT_BY_ID_COMPLETE, payload: response.data });
   } catch (error) {

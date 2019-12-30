@@ -29,7 +29,7 @@ const mapProduct = ({
   shipping: { free_shipping: free_shipping },
   sold_quantity,
   description,
-  address: { state_name: address }
+  address: { state_name: address } = {}
 }) => {
   return {
     id,

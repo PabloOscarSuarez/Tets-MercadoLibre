@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./style";
 
-function Home(props) {
-  return <div>home</div>;
+function Home() {
+  return <styles.Text>Busca lo que queres y compralo ahora!!!!</styles.Text>;
 }
 
 Home.propTypes = {};

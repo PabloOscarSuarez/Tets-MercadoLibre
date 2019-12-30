@@ -8,26 +8,20 @@ import ProductDetail from "../ProductDetail";
 import Home from "../Home ";
 import ErrorPage from "../ErrorPage";
 import Header from "../Header/Header";
+import styles from "./style";
 
 const App = () => (
   <Provider store={store}>
     <Router>
       <Header />
-      <main
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center"
-        }}
-      >
+      <styles.Main>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/items" component={ProductsList} />
           <Route exact path="/items/:id" component={ProductDetail} />
           <Route component={ErrorPage} />
         </Switch>
-      </main>
+      </styles.Main>
     </Router>
   </Provider>
 );
