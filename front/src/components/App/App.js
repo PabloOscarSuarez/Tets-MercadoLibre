@@ -9,12 +9,14 @@ import Home from "../Home ";
 import ErrorPage from "../ErrorPage";
 import Header from "../Header/Header";
 import styles from "./style";
+import BreadCrumbs from "../BreadCrumbs";
 
 const App = () => (
   <Provider store={store}>
     <Router>
       <Header />
       <styles.Main>
+        <BreadCrumbs />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/items" component={ProductsList} />

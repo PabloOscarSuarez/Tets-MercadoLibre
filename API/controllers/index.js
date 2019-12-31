@@ -13,20 +13,20 @@ const getProductList = async (req, res, next) => {
     );
     res.json(productList(data.data));
   } catch (error) {
-    console.log(error);
+    res.status("400").json({ error: "se produjo un error" });
     next();
   }
 };
 
 const getProduct = async (req, res, next) => {
   try {
-    console.log(req.params.id, "soy yo");
     const id = req.params.id;
     const detailProduct = await axios.get(`${endPointDetailProduct}${id}`);
     const descriptionProduct = await axios.get(
       `${endPointDetailProduct}${id}/description`
     );
     detailProduct.data.description = descriptionProduct.data.plain_text;
+
     res.json(productList(detailProduct.data));
   } catch (error) {
     console.log(error);

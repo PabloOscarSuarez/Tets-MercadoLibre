@@ -23,6 +23,10 @@ const Header = ({ history }) => {
     handleCleanTextClick();
   };
 
+  const handleKeyPrees = e => {
+    e.key === "Enter" && handleTextSearchTextClick();
+  };
+
   return (
     <styles.Header>
       <styles.Nav>
@@ -34,6 +38,7 @@ const Header = ({ history }) => {
           placeholder="Nunca dejes de buscar"
           onChange={handleChange}
           type="text"
+          onKeyPress={handleKeyPrees}
         />
         <styles.Button onClick={handleTextSearchTextClick}>
           <img src={iconSearch} />

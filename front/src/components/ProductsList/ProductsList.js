@@ -21,7 +21,11 @@ const ProductsList = ({ location }) => {
 
   const items = product.items && product.items;
   return (
-    (items && (
+    (isLoading && <h1>...cargando</h1>) ||
+    (items === null && (
+      <h1>problema con el servidor no se pudo buscar el producto </h1>
+    )) ||
+    (!!product.items.length && (
       <styles.Container>
         {product.items.map(item => (
           <div key={item.id}>
@@ -30,7 +34,7 @@ const ProductsList = ({ location }) => {
           </div>
         ))}
       </styles.Container>
-    )) || <h1>cargando ...</h1>
+    )) || <h1>No se encontraron resultados</h1>
   );
 };
 

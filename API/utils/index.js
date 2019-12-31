@@ -18,7 +18,6 @@ const treeOfCategories = filters => {
     const result = categories
       ? categories.values[0].path_from_root.map(category => category.name)
       : [];
-    console.log(result);
     return result;
   } else {
     return [];

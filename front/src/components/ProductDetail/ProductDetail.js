@@ -16,9 +16,14 @@ function ProductDetail({ match }) {
     dispatch(searchDetailProducts(id));
   }, [id]);
 
-  const item = product.items && product.items;
+  const item = (product === null && product) || product.items;
+
   return (
-    (item && (
+    (isLoading && <h1>...Cargando</h1>) ||
+    (item === null && (
+      <h1>No se pudo realizar esta peticion intente mas con otro producto</h1>
+    )) ||
+    (item.length !== 0 && (
       <styles.Container>
         <styles.Content>
           <styles.ContentImgAndDetail>
@@ -33,9 +38,9 @@ function ProductDetail({ match }) {
               <styles.Title>{item.title}</styles.Title>
               <styles.Price>
                 $ {item.price.amount}
-                {console.log(typeof item.price.amount)}
                 <styles.Decimals>{item.price.decimals}</styles.Decimals>
               </styles.Price>
+              {console.dir(product.items.price.decimals)}
               <styles.ButtonAddToCart>Comprar</styles.ButtonAddToCart>
             </styles.Detail>
           </styles.ContentImgAndDetail>
@@ -45,7 +50,7 @@ function ProductDetail({ match }) {
           </styles.ContentSubtitleAndDescription>
         </styles.Content>
       </styles.Container>
-    )) || <h1>cargango</h1>
+    ))
   );
 }
 

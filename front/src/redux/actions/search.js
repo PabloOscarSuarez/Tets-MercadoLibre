@@ -4,7 +4,8 @@ import {
   SEARCH_PRODUCTS_START,
   SEARCH_PRODUCT_BY_ID_COMPLETE,
   SEARCH_PRODUCT_BY_ID_START,
-  SEARCH_PRODUCT_BY_ID_ERROR
+  SEARCH_PRODUCT_BY_ID_ERROR,
+  RESET_STORE
 } from "../consts";
 
 import axios from "axios";
@@ -32,3 +33,5 @@ export const searchDetailProducts = payload => async dispatch => {
     dispatch({ type: SEARCH_PRODUCT_BY_ID_ERROR });
   }
 };
+
+export const ResetStore = () => ({ type: RESET_STORE });
