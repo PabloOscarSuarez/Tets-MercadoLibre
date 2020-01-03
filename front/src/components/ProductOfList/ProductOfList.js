@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import shipping from "../../Assets/ic_shipping.png";
 import { withRouter } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 import styles from "./style";
 
@@ -23,7 +24,14 @@ const ProductOfList = ({
         <styles.Img src={picture} alt={title} />
         <styles.ContentDetailAndTitle>
           <styles.Details>
-            <styles.Price>$ {price.amount}</styles.Price>
+            <NumberFormat
+              value={price.amount}
+              displayType={"text"}
+              renderText={value => <styles.Price>{value}</styles.Price>}
+              thousandSeparator={"."}
+              decimalSeparator={","}
+              prefix={"$ "}
+            />
             {free_shipping && (
               <styles.IconShipping src={shipping} alt="Free shipping" />
             )}

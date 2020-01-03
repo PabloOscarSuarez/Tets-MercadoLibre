@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./style";
+import NumberFormat from "react-number-format";
 
 import { useDispatch, useSelector } from "react-redux";
 import { searchDetailProducts } from "../../redux/actions/search";
@@ -36,10 +37,21 @@ function ProductDetail({ match }) {
                 {item.sold_quantity} vendidos
               </styles.Span>
               <styles.Title>{item.title}</styles.Title>
-              <styles.Price>
-                $ {item.price.amount}
-                <styles.Decimals>{item.price.decimals}</styles.Decimals>
-              </styles.Price>
+
+              <NumberFormat
+                value={item.price.amount}
+                displayType={"text"}
+                renderText={value => (
+                  <styles.Price>
+                    {value}
+                    <styles.Decimals>{item.price.decimals}</styles.Decimals>
+                  </styles.Price>
+                )}
+                thousandSeparator={"."}
+                decimalSeparator={","}
+                prefix={"$ "}
+              />
+
               {console.dir(product.items.price.decimals)}
               <styles.ButtonAddToCart>Comprar</styles.ButtonAddToCart>
             </styles.Detail>
